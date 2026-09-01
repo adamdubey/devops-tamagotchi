@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": 1,
+    "cause": "manual chaos",
+    "started_at": "2026-09-01T15:25:02.740928+00:00",
+    "resolved_at": null,
+    "mttr_seconds": null
+  }
+]

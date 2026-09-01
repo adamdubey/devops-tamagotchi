@@ -1,12 +1,12 @@
 {
-  "status": "healthy",
-  "cpu": 32,
-  "memory": 41,
+  "status": "incident",
+  "cpu": 97,
+  "memory": 96,
   "uptime_hours": 2,
-  "incidents": 0,
+  "incidents": 1,
   "deploys": 1,
-  "message": "server is happy",
-  "incident_started_at": null,
+  "message": "somebody poked prod",
+  "incident_started_at": "2026-09-01T15:25:02.740928+00:00",
   "last_mttr_seconds": null,
   "average_mttr_seconds": null
 }
