@@ -5,5 +5,12 @@
     "started_at": "2026-09-01T15:25:02.740928+00:00",
     "resolved_at": "2026-09-01T15:27:11.188313+00:00",
     "mttr_seconds": 128
+  },
+  {
+    "id": 2,
+    "cause": "manual chaos",
+    "started_at": "2026-09-01T15:33:51.343813+00:00",
+    "resolved_at": null,
+    "mttr_seconds": null
   }
 ]
