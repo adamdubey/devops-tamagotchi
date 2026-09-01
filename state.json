@@ -1,12 +1,12 @@
 {
-  "status": "healthy",
-  "cpu": 21,
-  "memory": 37,
+  "status": "incident",
+  "cpu": 100,
+  "memory": 62,
   "uptime_hours": 1,
-  "incidents": 1,
+  "incidents": 2,
   "deploys": 1,
-  "message": "server has recovered",
-  "incident_started_at": null,
+  "message": "CPU has entered another dimension",
+  "incident_started_at": "2026-09-01T15:10:32.797013+00:00",
   "last_mttr_seconds": 240,
   "average_mttr_seconds": 240
 }
