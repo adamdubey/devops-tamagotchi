@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 STATE_FILE = ROOT / "state.json"
-SVG_FILE = ROOT / "assets" / "dashboard.svg"
 README_FILE = ROOT / "README.md"
+ASSETS_DIR = ROOT / "assets"
 
 
 # ---------------------------------------------------------
@@ -65,21 +65,17 @@ with open(STATE_FILE, encoding="utf-8") as f:
 # ---------------------------------------------------------
 #
 # --render-only:
-#     Do NOT mutate state.
-#     Only regenerate dashboard + README cache key.
+#   Leave state untouched and only regenerate the dashboard.
 #
 # Normal run:
-#     Simulate telemetry.
+#   Simulate telemetry.
 #
-# IMPORTANT:
-#     If an incident is already active, the scheduled health
-#     check does NOT magically heal prod.
+# Active incidents stay active until poke_prod.py heals them.
 # ---------------------------------------------------------
 
 if not args.render_only:
 
     if state["status"] == "incident":
-        # Prod remains broken until explicitly healed.
         state["cpu"] = random.randint(88, 100)
         state["memory"] = random.randint(85, 100)
 
@@ -90,11 +86,6 @@ if not args.render_only:
         roll = random.random()
 
         if roll < 0.08:
-            # A spontaneous simulated problem.
-            #
-            # For now this is degraded rather than a tracked
-            # incident, because tracked incidents are managed
-            # through poke_prod.py.
             state["status"] = "degraded"
             state["message"] = "prod is having a moment"
 
@@ -177,7 +168,11 @@ average_mttr = format_duration(state.get("average_mttr_seconds"))
 updated_at = datetime.now(timezone.utc)
 
 updated_display = updated_at.strftime("%Y-%m-%d %H:%M UTC")
-cache_buster = updated_at.strftime("%Y%m%d%H%M%S%f")
+dashboard_version = updated_at.strftime("%Y%m%d-%H%M%S%f")
+
+ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+
+SVG_FILE = ASSETS_DIR / f"dashboard-{dashboard_version}.svg"
 
 
 # ---------------------------------------------------------
@@ -295,10 +290,8 @@ svg = f"""
 
 
 # ---------------------------------------------------------
-# WRITE SVG
+# WRITE NEW VERSIONED SVG
 # ---------------------------------------------------------
-
-SVG_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 SVG_FILE.write_text(
     svg,
@@ -307,35 +300,47 @@ SVG_FILE.write_text(
 
 
 # ---------------------------------------------------------
-# CACHE-BUST README IMAGE
-# ---------------------------------------------------------
-#
-# GitHub can cache SVGs aggressively.
-#
-# We modify:
-#
-#   ./assets/dashboard.svg?v=123
-#
-# into:
-#
-#   ./assets/dashboard.svg?v=456
-#
-# every time the dashboard renders.
+# UPDATE README TO POINT TO NEW ASSET
 # ---------------------------------------------------------
 
 if README_FILE.exists():
     readme = README_FILE.read_text(encoding="utf-8")
 
+    new_dashboard_path = (
+        f"./assets/dashboard-{dashboard_version}.svg"
+    )
+
+    # Replace an already-versioned dashboard filename.
     updated_readme = re.sub(
-        r'(\./assets/dashboard\.svg)(?:\?v=[^"\')\s>]*)?',
-        rf"\1?v={cache_buster}",
+        r"\./assets/dashboard-[^\"')\s>]+\.svg",
+        new_dashboard_path,
         readme,
+    )
+
+    # Handle migration from the original fixed filename.
+    updated_readme = updated_readme.replace(
+        "./assets/dashboard.svg",
+        new_dashboard_path,
     )
 
     README_FILE.write_text(
         updated_readme,
         encoding="utf-8",
     )
+
+
+# ---------------------------------------------------------
+# CLEAN UP OLD GENERATED DASHBOARDS
+# ---------------------------------------------------------
+#
+# Keep only the newly generated dashboard.
+# The git commit will record the old one as deleted and
+# the new one as added.
+# ---------------------------------------------------------
+
+for old_dashboard in ASSETS_DIR.glob("dashboard-*.svg"):
+    if old_dashboard != SVG_FILE:
+        old_dashboard.unlink()
 
 
 # ---------------------------------------------------------
@@ -352,3 +357,5 @@ print(
     f"LAST MTTR {last_mttr} | "
     f"AVG MTTR {average_mttr}"
 )
+
+print(f"Dashboard: {SVG_FILE.name}")
