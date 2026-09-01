@@ -31,12 +31,15 @@ jobs:
       - name: 🩺 Check Tamagotchi
         run: python scripts/tamagotchi.py
 
+      - name: 🚨 Generate incident documentation
+        run: python scripts/generate_incidents.py
+
       - name: 🔍 Show resulting state
         run: cat state.json
 
-      - name: 🔍 Show generated dashboard
+      - name: 🔍 Show generated files
         run: |
-          echo "===== GENERATED ASSETS ====="
+          echo "===== ASSETS ====="
           ls -la assets/
 
           echo ""
@@ -44,8 +47,8 @@ jobs:
           grep "STATUS" -A 2 assets/dashboard-*.svg || true
 
           echo ""
-          echo "===== README IMAGE ====="
-          grep "dashboard-" README.md || true
+          echo "===== INCIDENT SUMMARY ====="
+          head -30 INCIDENTS.md
 
       - name: 💾 Save new state
         run: |
@@ -55,6 +58,8 @@ jobs:
           git add \
             state.json \
             assets/ \
+            incidents/ \
+            INCIDENTS.md \
             README.md
 
           git diff --cached --quiet && exit 0
