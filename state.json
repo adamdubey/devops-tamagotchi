@@ -1,12 +1,12 @@
 {
-  "status": "healthy",
-  "cpu": 21,
-  "memory": 37,
+  "status": "incident",
+  "cpu": 54,
+  "memory": 99,
   "uptime_hours": 2,
-  "incidents": 2,
+  "incidents": 3,
   "deploys": 1,
-  "message": "server has recovered",
-  "incident_started_at": null,
+  "message": "memory is disappearing suspiciously",
+  "incident_started_at": "2026-09-01T15:55:56.751370+00:00",
   "last_mttr_seconds": 26,
   "average_mttr_seconds": 77
 }

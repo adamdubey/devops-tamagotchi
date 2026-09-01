@@ -12,5 +12,12 @@
     "started_at": "2026-09-01T15:33:51.343813+00:00",
     "resolved_at": "2026-09-01T15:34:17.611868+00:00",
     "mttr_seconds": 26
+  },
+  {
+    "id": 3,
+    "cause": "memory leak",
+    "started_at": "2026-09-01T15:55:56.751370+00:00",
+    "resolved_at": null,
+    "mttr_seconds": null
   }
 ]

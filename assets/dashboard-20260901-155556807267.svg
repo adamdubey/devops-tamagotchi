@@ -7,13 +7,13 @@
     }
 
     .card {
-      fill: #0d2818;
-      stroke: #3fb950;
+      fill: #2d1117;
+      stroke: #f85149;
       stroke-width: 3;
     }
 
     .title {
-      fill: #3fb950;
+      fill: #f85149;
       font: bold 26px monospace;
     }
 
@@ -23,7 +23,7 @@
     }
 
     .status {
-      fill: #3fb950;
+      fill: #f85149;
       font: bold 20px monospace;
     }
 
@@ -33,12 +33,12 @@
     }
 
     .face {
-      fill: #3fb950;
+      fill: #f85149;
       font: bold 25px monospace;
     }
 
     .message {
-      fill: #3fb950;
+      fill: #f85149;
       font: bold 17px monospace;
     }
   </style>
@@ -64,15 +64,15 @@
   </text>
 
   <text class="status" x="50" y="115">
-    STATUS     🟢 HEALTHY
+    STATUS     🔴 INCIDENT
   </text>
 
   <text class="text" x="50" y="155">
-    CPU        ██░░░░░░░░  21%
+    CPU        █████░░░░░  54%
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ███░░░░░░░  37%
+    MEMORY     █████████░  99%
   </text>
 
   <text class="text" x="50" y="235">
@@ -80,7 +80,7 @@
   </text>
 
   <text class="text" x="50" y="275">
-    INCIDENTS  2
+    INCIDENTS  3
   </text>
 
   <text class="text" x="50" y="315">
@@ -92,15 +92,15 @@
   </text>
 
   <text class="face" x="430" y="170">
-    (づ ◕‿◕ )づ
+    (╯°□°)╯︵ ┻━┻
   </text>
 
   <text class="message" x="430" y="215">
-    server has recovered
+    memory is disappearing suspiciously
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-01 15:34 UTC
+    Last check: 2026-09-01 15:55 UTC
   </text>
 
 </svg>
