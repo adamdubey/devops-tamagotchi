@@ -3,7 +3,7 @@
 > A tiny virtual production server kept alive entirely by GitHub Actions.
 
 <p align="center">
-  <img src="./assets/dashboard.svg" width="720" alt="DevOps Tamagotchi dashboard">
+  <img src="./assets/dashboard.svg?v=1" width="720" alt="DevOps Tamagotchi dashboard">
 </p>
 
 ## What is this?
@@ -19,42 +19,72 @@ Every hour, GitHub Actions:
 - 🎨 regenerates the dashboard above
 - 🤖 commits the updated state back to the repository
 
-No server.
+You can also manually poke production using the **😈 Poke Prod** workflow.
 
-No cloud account.
+Available chaos controls:
+
+- 💥 `incident` — cause a generic production incident
+- 🔥 `cpu` — saturate CPU
+- 🧠 `memory` — simulate a memory leak
+- 💚 `heal` — resolve the active incident
+- 🍪 `feed` — give the server a snack
+
+No server.
 
 Just GitHub Actions keeping a fake server emotionally stable.
 
 ## Architecture
 
 ```text
-        GitHub Actions
+                    GitHub Actions
+                          │
+              ┌───────────┴───────────┐
+              │                       │
+              ▼                       ▼
+      🐣 Health Check           😈 Poke Prod
+              │                       │
+              │                 ┌─────┴─────┐
+              │                 │           │
+              ▼                 ▼           ▼
+        tamagotchi.py      poke_prod.py   chaos
+              │                 │
+              └────────┬────────┘
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+          state.json      incidents.json
               │
               ▼
-      scheduled health check
+        dashboard.svg
               │
               ▼
-        tamagotchi.py
-              │
-       ┌──────┴──────┐
-       ▼             ▼
-   state.json   dashboard.svg
-       │             │
-       └──────┬──────┘
-              ▼
-        automated commit
-              │
-              ▼
-          README 🐣
+           README
 ```
 
-## Possible states
 
-State	Meaning:
+## Incident lifecycle & Possible States
+
+**State Meaning:**
 - 🟢 Healthy	prod is vibing
 - 🟡 Degraded	prod feels suspicious
 - 🔴 Incident	somebody wake up on-call
 
+```
+🟢 HEALTHY
+     │
+     │ 😈 poke prod
+     ▼
+🔴 INCIDENT
+     │
+     │ incident timer running
+     │
+     │ 💚 heal
+     ▼
+🟢 HEALTHY
+     │
+     ├── Last MTTR
+     └── Average MTTR
+```
 
 ## Built with
 
@@ -62,4 +92,7 @@ State	Meaning:
 - Python
 - SVG
 - cron
+- persistent JSON state
+- incident tracking
+- MTTR calculation
 - questionable production decisions
