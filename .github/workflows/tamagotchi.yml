@@ -34,10 +34,18 @@ jobs:
       - name: 🔍 Show resulting state
         run: cat state.json
 
-      - name: 🔍 Show dashboard status
+      - name: 🔍 Show generated dashboard
         run: |
-          grep "STATUS" -A 2 assets/dashboard.svg || true
-          grep "dashboard.svg" README.md || true
+          echo "===== GENERATED ASSETS ====="
+          ls -la assets/
+
+          echo ""
+          echo "===== DASHBOARD STATUS ====="
+          grep "STATUS" -A 2 assets/dashboard-*.svg || true
+
+          echo ""
+          echo "===== README IMAGE ====="
+          grep "dashboard-" README.md || true
 
       - name: 💾 Save new state
         run: |
@@ -46,7 +54,7 @@ jobs:
 
           git add \
             state.json \
-            assets/dashboard.svg \
+            assets/ \
             README.md
 
           git diff --cached --quiet && exit 0
