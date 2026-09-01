@@ -2,11 +2,16 @@ name: 🐣 Keep Tamagotchi Alive
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "17 * * * *"
 
 permissions:
   contents: write
+
+concurrency:
+  group: tamagotchi-state
+  cancel-in-progress: false
 
 jobs:
   health-check:
@@ -15,6 +20,8 @@ jobs:
     steps:
       - name: 📦 Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
@@ -24,14 +31,25 @@ jobs:
       - name: 🩺 Check Tamagotchi
         run: python scripts/tamagotchi.py
 
+      - name: 🔍 Show resulting state
+        run: cat state.json
+
+      - name: 🔍 Show dashboard status
+        run: |
+          grep "STATUS" -A 2 assets/dashboard.svg || true
+          grep "dashboard.svg" README.md || true
+
       - name: 💾 Save new state
         run: |
           git config user.name "devops-tamagotchi[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json assets/dashboard.svg
+          git add \
+            state.json \
+            assets/dashboard.svg \
+            README.md
 
           git diff --cached --quiet && exit 0
 
           git commit -m "🐣 tamagotchi health check"
-          git push
+          git push origin HEAD:main

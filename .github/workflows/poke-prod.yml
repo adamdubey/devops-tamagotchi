@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: tamagotchi-state
+  cancel-in-progress: false
+
 jobs:
   chaos:
     runs-on: ubuntu-latest
@@ -25,26 +29,57 @@ jobs:
     steps:
       - name: 📦 Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: 📋 State before chaos
+        run: cat state.json
+
       - name: 😈 Poke production
         run: python scripts/poke_prod.py "${{ inputs.action }}"
 
+      - name: 🔍 State after chaos
+        run: cat state.json
+
       - name: 🎨 Regenerate dashboard
         run: python scripts/tamagotchi.py --render-only
+
+      - name: 🔍 State after rendering
+        run: cat state.json
+
+      - name: 🔍 Check rendered dashboard
+        run: |
+          echo "===== DASHBOARD STATUS ====="
+          grep "STATUS" -A 2 assets/dashboard.svg || true
+
+          echo ""
+          echo "===== INCIDENT TEXT ====="
+          grep -n "INCIDENT" assets/dashboard.svg || true
+
+          echo ""
+          echo "===== README IMAGE ====="
+          grep "dashboard.svg" README.md || true
 
       - name: 💾 Persist chaos
         run: |
           git config user.name "devops-tamagotchi[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json incidents.json assets/dashboard.svg
+          git add \
+            state.json \
+            incidents.json \
+            assets/dashboard.svg \
+            README.md
+
+          echo "===== CHANGES ====="
+          git status --short
 
           git diff --cached --quiet && exit 0
 
           git commit -m "😈 poke prod: ${{ inputs.action }}"
-          git push
+          git push origin HEAD:main
