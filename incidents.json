@@ -1,16 +1,1 @@
-[
-  {
-    "id": 1,
-    "cause": "memory leak",
-    "started_at": "2026-09-01T14:58:35.981632+00:00",
-    "resolved_at": "2026-09-01T15:02:36.110652+00:00",
-    "mttr_seconds": 240
-  },
-  {
-    "id": 2,
-    "cause": "cpu saturation",
-    "started_at": "2026-09-01T15:10:32.797013+00:00",
-    "resolved_at": "2026-09-01T15:12:13.978026+00:00",
-    "mttr_seconds": 101
-  }
-]
+[]
