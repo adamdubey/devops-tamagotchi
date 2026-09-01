@@ -55,19 +55,19 @@
   <text class="text"
         x="50"
         y="115">
-    STATUS     🔴 INCIDENT
+    STATUS     🟢 HEALTHY
   </text>
 
   <text class="text"
         x="50"
         y="155">
-    CPU        █████░░░░░  54%
+    CPU        ██░░░░░░░░  21%
   </text>
 
   <text class="text"
         x="50"
         y="195">
-    MEMORY     █████████░  99%
+    MEMORY     ███░░░░░░░  37%
   </text>
 
   <text class="text"
@@ -85,31 +85,31 @@
   <text class="text"
         x="50"
         y="315">
-    LAST MTTR  N/A
+    LAST MTTR  4m 0s
   </text>
 
   <text class="text"
         x="50"
         y="355">
-    AVG MTTR   N/A
+    AVG MTTR   4m 0s
   </text>
 
   <text class="face"
         x="430"
         y="170">
-    (╯°□°)╯︵ ┻━┻
+    (づ ◕‿◕ )づ
   </text>
 
   <text class="text"
         x="430"
         y="215">
-    memory is disappearing suspiciously
+    server has recovered
   </text>
 
   <text class="small"
         x="50"
         y="405">
-    Last check: 2026-09-01 14:58 UTC
+    Last check: 2026-09-01 15:02 UTC
   </text>
 
 </svg>
