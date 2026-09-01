@@ -1,3 +1,4 @@
+```yaml
 name: 😈 Poke Prod
 
 on:
@@ -52,18 +53,18 @@ jobs:
       - name: 🔍 State after rendering
         run: cat state.json
 
-      - name: 🔍 Check rendered dashboard
+      - name: 🔍 Check generated dashboard
         run: |
-          echo "===== DASHBOARD STATUS ====="
-          grep "STATUS" -A 2 assets/dashboard.svg || true
+          echo "===== GENERATED ASSETS ====="
+          ls -la assets/
 
           echo ""
-          echo "===== INCIDENT TEXT ====="
-          grep -n "INCIDENT" assets/dashboard.svg || true
+          echo "===== DASHBOARD STATUS ====="
+          grep "STATUS" -A 2 assets/dashboard-*.svg || true
 
           echo ""
           echo "===== README IMAGE ====="
-          grep "dashboard.svg" README.md || true
+          grep "dashboard-" README.md || true
 
       - name: 💾 Persist chaos
         run: |
@@ -73,7 +74,7 @@ jobs:
           git add \
             state.json \
             incidents.json \
-            assets/dashboard.svg \
+            assets/ \
             README.md
 
           echo "===== CHANGES ====="
@@ -83,3 +84,4 @@ jobs:
 
           git commit -m "😈 poke prod: ${{ inputs.action }}"
           git push origin HEAD:main
+```
