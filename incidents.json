@@ -10,7 +10,7 @@
     "id": 2,
     "cause": "cpu saturation",
     "started_at": "2026-09-01T15:10:32.797013+00:00",
-    "resolved_at": null,
-    "mttr_seconds": null
+    "resolved_at": "2026-09-01T15:12:13.978026+00:00",
+    "mttr_seconds": 101
   }
 ]

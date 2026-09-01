@@ -55,19 +55,19 @@
   <text class="text"
         x="50"
         y="115">
-    STATUS     🔴 INCIDENT
+    STATUS     🟢 HEALTHY
   </text>
 
   <text class="text"
         x="50"
         y="155">
-    CPU        ██████████  100%
+    CPU        ██░░░░░░░░  21%
   </text>
 
   <text class="text"
         x="50"
         y="195">
-    MEMORY     ██████░░░░  62%
+    MEMORY     ███░░░░░░░  37%
   </text>
 
   <text class="text"
@@ -85,31 +85,31 @@
   <text class="text"
         x="50"
         y="315">
-    LAST MTTR  4m 0s
+    LAST MTTR  1m 41s
   </text>
 
   <text class="text"
         x="50"
         y="355">
-    AVG MTTR   4m 0s
+    AVG MTTR   2m 50s
   </text>
 
   <text class="face"
         x="430"
         y="170">
-    (╯°□°)╯︵ ┻━┻
+    (づ ◕‿◕ )づ
   </text>
 
   <text class="text"
         x="430"
         y="215">
-    CPU has entered another dimension
+    server has recovered
   </text>
 
   <text class="small"
         x="50"
         y="405">
-    Last check: 2026-09-01 15:10 UTC
+    Last check: 2026-09-01 15:12 UTC
   </text>
 
 </svg>
