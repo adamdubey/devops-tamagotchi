@@ -43,27 +43,37 @@ jobs:
       - name: 😈 Poke production
         run: python scripts/poke_prod.py "${{ inputs.action }}"
 
-      - name: 🔍 State after chaos
-        run: cat state.json
-
       - name: 🎨 Regenerate dashboard
         run: python scripts/tamagotchi.py --render-only
 
-      - name: 🔍 State after rendering
-        run: cat state.json
+      - name: 🚨 Generate incident documentation
+        run: python scripts/generate_incidents.py
 
-      - name: 🔍 Check generated dashboard
+      - name: 🔍 Show resulting state
         run: |
-          echo "===== GENERATED ASSETS ====="
+          echo "===== STATE ====="
+          cat state.json
+
+          echo ""
+          echo "===== INCIDENTS ====="
+          cat incidents.json
+
+      - name: 🔍 Check generated files
+        run: |
+          echo "===== ASSETS ====="
           ls -la assets/
 
           echo ""
-          echo "===== DASHBOARD STATUS ====="
-          grep "STATUS" -A 2 assets/dashboard-*.svg || true
+          echo "===== POSTMORTEMS ====="
+          ls -la incidents/ || true
 
           echo ""
-          echo "===== README IMAGE ====="
+          echo "===== README DASHBOARD ====="
           grep "dashboard-" README.md || true
+
+          echo ""
+          echo "===== INCIDENT SUMMARY ====="
+          head -40 INCIDENTS.md
 
       - name: 💾 Persist chaos
         run: |
@@ -74,6 +84,8 @@ jobs:
             state.json \
             incidents.json \
             assets/ \
+            incidents/ \
+            INCIDENTS.md \
             README.md
 
           echo "===== CHANGES ====="
