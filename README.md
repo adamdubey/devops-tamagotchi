@@ -6,6 +6,37 @@
   <img src="./assets/dashboard.svg" width="720" alt="DevOps Tamagotchi dashboard">
 </p>
 
+## 🚨 Incident Response
+
+Production incidents are automatically tracked from detection through recovery.
+
+👉 **[View the full incident history](./INCIDENTS.md)**
+
+Every tracked incident records:
+
+- cause
+- start time
+- resolution time
+- MTTR
+- current status
+- an automatically generated postmortem
+
+The incident lifecycle is managed entirely by GitHub Actions:
+
+```text
+😈 Chaos
+    ↓
+🔴 Incident
+    ↓
+📊 Tracking
+    ↓
+💚 Recovery
+    ↓
+⏱️ MTTR
+    ↓
+📝 Postmortem
+```
+
 ## What is this?
 
 DevOps Tamagotchi is a tiny simulated production environment living inside a GitHub repository.
