@@ -17,7 +17,7 @@
     "id": 3,
     "cause": "memory leak",
     "started_at": "2026-09-01T15:55:56.751370+00:00",
-    "resolved_at": null,
-    "mttr_seconds": null
+    "resolved_at": "2026-09-01T15:56:39.686565+00:00",
+    "mttr_seconds": 42
   }
 ]

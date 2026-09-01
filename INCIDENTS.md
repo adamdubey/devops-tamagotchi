@@ -10,31 +10,25 @@ Do not edit it manually.
 | Metric | Value |
 |---|---:|
 | Total incidents | 3 |
-| Resolved | 2 |
-| Active | 1 |
-| Average MTTR | 1m 17s |
-| Last MTTR | 26s |
+| Resolved | 3 |
+| Active | 0 |
+| Average MTTR | 1m 5s |
+| Last MTTR | 42s |
 
-## 🔴 Active Incident
+## 🟢 Current Status
 
-### Incident #3 — Memory Leak
-
-| Field | Value |
-|---|---|
-| Status | 🔴 ACTIVE |
-| Cause | Memory Leak |
-| Started | 2026-09-01 15:55:56 UTC |
-| Duration | 0s |
+There are no active tracked incidents.
 
 ## 📜 Incident Log
 
 | # | Cause | Started | Resolved | MTTR | Status |
 |---:|---|---|---|---:|---|
-| 3 | Memory Leak | 2026-09-01 15:55:56 UTC | — | — | 🔴 Active |
+| 3 | Memory Leak | 2026-09-01 15:55:56 UTC | 2026-09-01 15:56:39 UTC | 42s | 🟢 Resolved |
 | 2 | Manual Chaos | 2026-09-01 15:33:51 UTC | 2026-09-01 15:34:17 UTC | 26s | 🟢 Resolved |
 | 1 | Manual Chaos | 2026-09-01 15:25:02 UTC | 2026-09-01 15:27:11 UTC | 2m 8s | 🟢 Resolved |
 
 ## 📝 Postmortems
 
+- [Incident #003](./incidents/incident-003.md)
 - [Incident #002](./incidents/incident-002.md)
 - [Incident #001](./incidents/incident-001.md)
