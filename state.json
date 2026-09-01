@@ -1,9 +1,12 @@
 {
   "status": "healthy",
-  "cpu": 33,
-  "memory": 31,
-  "uptime_hours": 2,
+  "cpu": 32,
+  "memory": 41,
+  "uptime_hours": 1,
   "incidents": 0,
   "deploys": 1,
-  "message": "server is happy"
+  "message": "server is happy",
+  "incident_started_at": null,
+  "last_mttr_seconds": null,
+  "average_mttr_seconds": null
 }

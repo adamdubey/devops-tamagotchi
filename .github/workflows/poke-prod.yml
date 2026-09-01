@@ -1,0 +1,50 @@
+name: 😈 Poke Prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "What should we do to prod?"
+        required: true
+        default: incident
+        type: choice
+        options:
+          - incident
+          - cpu
+          - memory
+          - heal
+          - feed
+
+permissions:
+  contents: write
+
+jobs:
+  chaos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 😈 Poke production
+        run: python scripts/poke_prod.py "${{ inputs.action }}"
+
+      - name: 🎨 Regenerate dashboard
+        run: python scripts/tamagotchi.py --render-only
+
+      - name: 💾 Persist chaos
+        run: |
+          git config user.name "devops-tamagotchi[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add state.json incidents.json assets/dashboard.svg
+
+          git diff --cached --quiet && exit 0
+
+          git commit -m "😈 poke prod: ${{ inputs.action }}"
+          git push
