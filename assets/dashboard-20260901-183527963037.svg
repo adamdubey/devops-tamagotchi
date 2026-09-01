@@ -72,11 +72,11 @@
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ███░░░░░░░  37%
+    MEMORY     ██░░░░░░░░  28%
   </text>
 
   <text class="text" x="50" y="235">
-    UPTIME     2h
+    UPTIME     3h
   </text>
 
   <text class="text" x="50" y="275">
@@ -96,11 +96,11 @@
   </text>
 
   <text class="message" x="430" y="215">
-    server has recovered
+    server is happy
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-01 15:56 UTC
+    Last check: 2026-09-01 18:35 UTC
   </text>
 
 </svg>
