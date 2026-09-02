@@ -1,11 +1,11 @@
 {
-  "status": "degraded",
-  "cpu": 68,
-  "memory": 72,
-  "uptime_hours": 5,
+  "status": "healthy",
+  "cpu": 25,
+  "memory": 23,
+  "uptime_hours": 6,
   "incidents": 3,
   "deploys": 1,
-  "message": "server feels kinda weird",
+  "message": "server is happy",
   "incident_started_at": null,
   "last_mttr_seconds": 42,
   "average_mttr_seconds": 65
