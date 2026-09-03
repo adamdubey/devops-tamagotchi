@@ -1,8 +1,8 @@
 {
   "status": "degraded",
-  "cpu": 77,
-  "memory": 84,
-  "uptime_hours": 13,
+  "cpu": 61,
+  "memory": 74,
+  "uptime_hours": 14,
   "incidents": 3,
   "deploys": 1,
   "message": "prod is having a moment",
