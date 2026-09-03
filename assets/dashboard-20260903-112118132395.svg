@@ -68,15 +68,15 @@
   </text>
 
   <text class="text" x="50" y="155">
-    CPU        ██████░░░░  60%
+    CPU        ███████░░░  77%
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ████████░░  81%
+    MEMORY     ████████░░  84%
   </text>
 
   <text class="text" x="50" y="235">
-    UPTIME     12h
+    UPTIME     13h
   </text>
 
   <text class="text" x="50" y="275">
@@ -96,11 +96,11 @@
   </text>
 
   <text class="message" x="430" y="215">
-    server feels kinda weird
+    prod is having a moment
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-03 05:52 UTC
+    Last check: 2026-09-03 11:21 UTC
   </text>
 
 </svg>
