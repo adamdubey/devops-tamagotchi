@@ -7,13 +7,13 @@
     }
 
     .card {
-      fill: #2d250d;
-      stroke: #d29922;
+      fill: #0d2818;
+      stroke: #3fb950;
       stroke-width: 3;
     }
 
     .title {
-      fill: #d29922;
+      fill: #3fb950;
       font: bold 26px monospace;
     }
 
@@ -23,7 +23,7 @@
     }
 
     .status {
-      fill: #d29922;
+      fill: #3fb950;
       font: bold 20px monospace;
     }
 
@@ -33,12 +33,12 @@
     }
 
     .face {
-      fill: #d29922;
+      fill: #3fb950;
       font: bold 25px monospace;
     }
 
     .message {
-      fill: #d29922;
+      fill: #3fb950;
       font: bold 17px monospace;
     }
   </style>
@@ -64,19 +64,19 @@
   </text>
 
   <text class="status" x="50" y="115">
-    STATUS     🟡 DEGRADED
+    STATUS     🟢 HEALTHY
   </text>
 
   <text class="text" x="50" y="155">
-    CPU        ███████░░░  70%
+    CPU        █░░░░░░░░░  19%
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ███████░░░  70%
+    MEMORY     ██░░░░░░░░  22%
   </text>
 
   <text class="text" x="50" y="235">
-    UPTIME     17h
+    UPTIME     18h
   </text>
 
   <text class="text" x="50" y="275">
@@ -92,15 +92,15 @@
   </text>
 
   <text class="face" x="430" y="170">
-    (・_・;)
+    (づ ◕‿◕ )づ
   </text>
 
   <text class="message" x="430" y="215">
-    server feels kinda weird
+    server is happy
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-04 01:01 UTC
+    Last check: 2026-09-04 05:58 UTC
   </text>
 
 </svg>
