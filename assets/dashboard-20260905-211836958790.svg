@@ -68,15 +68,15 @@
   </text>
 
   <text class="text" x="50" y="155">
-    CPU        █░░░░░░░░░  15%
+    CPU        █████░░░░░  54%
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ███░░░░░░░  34%
+    MEMORY     ███░░░░░░░  33%
   </text>
 
   <text class="text" x="50" y="235">
-    UPTIME     28h
+    UPTIME     29h
   </text>
 
   <text class="text" x="50" y="275">
@@ -100,7 +100,7 @@
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-05 19:04 UTC
+    Last check: 2026-09-05 21:18 UTC
   </text>
 
 </svg>
