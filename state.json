@@ -1,8 +1,8 @@
 {
   "status": "healthy",
-  "cpu": 24,
-  "memory": 23,
-  "uptime_hours": 69,
+  "cpu": 26,
+  "memory": 45,
+  "uptime_hours": 70,
   "incidents": 3,
   "deploys": 1,
   "message": "server is happy",
