@@ -72,11 +72,11 @@
   </text>
 
   <text class="text" x="50" y="195">
-    MEMORY     ███████░░░  74%
+    MEMORY     ██████░░░░  65%
   </text>
 
   <text class="text" x="50" y="235">
-    UPTIME     97h
+    UPTIME     98h
   </text>
 
   <text class="text" x="50" y="275">
@@ -100,7 +100,7 @@
   </text>
 
   <text class="small" x="50" y="405">
-    Last check: 2026-09-17 13:32 UTC
+    Last check: 2026-09-17 18:18 UTC
   </text>
 
 </svg>
