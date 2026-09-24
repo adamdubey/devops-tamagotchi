@@ -3,7 +3,7 @@
 > A tiny virtual production server kept alive entirely by GitHub Actions.
 
 <p align="center">
-  <img src="./assets/dashboard-20260924-151147492767.svg" width="720" alt="DevOps Tamagotchi dashboard">
+  <img src="./assets/dashboard-20260924-191417457450.svg" width="720" alt="DevOps Tamagotchi dashboard">
 </p>
 
 ## 🚨 Incident Response
