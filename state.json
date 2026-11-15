@@ -1,8 +1,8 @@
 {
   "status": "degraded",
-  "cpu": 62,
-  "memory": 90,
-  "uptime_hours": 365,
+  "cpu": 80,
+  "memory": 75,
+  "uptime_hours": 366,
   "incidents": 3,
   "deploys": 1,
   "message": "server feels kinda weird",
